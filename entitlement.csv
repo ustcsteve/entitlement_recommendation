@@ -1,0 +1,102 @@
+Entitlement Code,Description
+ACH_CRED_CR,Provides drafting access for finance clerks to the ACH system for the purpose of creating outgoing direct deposit or vendor payment files.
+ACH_CRED_AP,Provides authorization access for corporate treasurers to the ACH system for the purpose of approving and releasing pending outgoing payment batches.
+ACH_DEBT_CR,Provides drafting access for accounting clerks to the ACH system for the purpose of initiating outgoing collection or debit extraction files.
+ACH_DEBT_AP,Provides authorization access for cash managers to the ACH system for the purpose of verifying and executing outgoing customer debit collections.
+WIR_DOM_CR,Provides drafting access for transaction clerks to the wire platform for the purpose of entering and scheduling domestic fund transfers.
+WIR_DOM_AP,Provides authorization access for finance managers to the wire platform for the purpose of clearing and releasing high-value domestic transfers.
+WIR_INT_CR,Provides drafting access for settlement clerks to the cross-border wire platform for the purpose of entering international foreign currency transfers.
+WIR_INT_AP,Provides authorization access for corporate treasurers to the cross-border wire platform for the purpose of approving high-risk international fund movements.
+WIR_BK_CR,Provides creation access for operations clerks to the internal ledger system for the purpose of initiating book transfers between company accounts.
+WIR_BK_AP,Provides authorization access for treasury managers to the internal ledger system for the purpose of approving cash concentration book movements.
+TXN_FX_CR,Provides execution access for FX traders to the currency trading desk for the purpose of securing spot rates and drafting cross-currency payments.
+TXN_FX_AP,Provides authorization access for corporate treasurers to the currency trading desk for the purpose of approving cross-currency trades and settlement funding.
+TXN_RE_CR,Provides setup access for billing clerks to the payment scheduler for the purpose of configuring recurring or automated template-driven payments.
+TXN_RE_AP,Provides authorization access for finance managers to the payment scheduler for the purpose of activating recurring corporate payment contracts.
+TXN_URG_CR,Provides execution access for cash treasurers to the real-time gross settlement network for the purpose of sending high-priority, time-critical payments.
+RPT_BAL_VW,Provides read-only access for internal auditors to the account information portal for the purpose of reviewing real-time ledger and available balances.
+RPT_TXN_VW,Provides read-only access for financial analysts to the transaction history ledger for the purpose of tracking intra-day and end-of-day postings.
+RPT_STM_DL,Provides download access for corporate accountants to the document repository for the purpose of retrieving monthly official electronic statements.
+RPT_ADV_VW,Provides view-only access for reconciliation clerks to the digital notice archive for the purpose of inspecting individual debit or credit advices.
+RPT_CUST_CR,Provides creation access for reporting analysts to the business intelligence tool for the purpose of generating custom ad-hoc activity reports.
+RPT_AUD_VW,Provides view-only access for cybersecurity analysts to the system log manager for the purpose of inspecting corporate user activity audit trails.
+RPT_INT_VW,Provides view-only access for tax accountants to the earnings dashboard for the purpose of reviewing accumulated interest and tax documents.
+RPT_VAL_VW,Provides view-only access for investment analysts to the sweep ledger for the purpose of evaluating historical valuation data for automated investments.
+RPT_XLS_EX,Provides export access for data analysts to the transaction reporting database for the purpose of downloading financial records to CSV or Excel files.
+RPT_API_ST,Provides configuration access for software developers to the bank integration gateway for the purpose of setting up automated data delivery via APIs.
+ADM_USR_CR,Provides administrative creation access for system administrators to the identity directory for the purpose of onboarding and provisioning new company users.
+ADM_USR_MD,Provides administrative modification access for system administrators to the identity directory for the purpose of updating active user profile parameters.
+ADM_USR_DE,Provides administrative deletion access for security managers to the identity directory for the purpose of deactivating or offboarding corporate profiles.
+ADM_ROL_CR,Provides configuration access for cybersecurity architects to the access control manager for the purpose of defining and saving new role-based templates.
+ADM_ROL_MD,Provides modification access for cybersecurity architects to the access control manager for the purpose of adjusting entitlements inside active roles.
+ADM_PWD_RS,Provides administrative reset access for IT specialists to the authentication system for the purpose of clearing passwords and login lockouts.
+ADM_2FA_RS,Provides administrative reset access for IT technicians to the credential manager for the purpose of unlinking and resetting multi-factor tokens.
+ADM_LMT_MD,Provides configuration access for corporate administrators to the risk control panel for the purpose of updating individual user transactional spending caps.
+ADM_POL_CR,Provides administrative setup access for security directors to the control policy engine for the purpose of defining dual-custody approval criteria.
+ADM_IP_STR,Provides administrative management access for IT technicians to the firewall controller for the purpose of restricting portal access to corporate IP ranges.
+ADM_TIM_MD,Provides configuration access for cybersecurity analysts to the scheduling engine for the purpose of establishing permissible hours for user logons.
+ADM_ALR_CF,Provides setup access for platform administrators to the notification hub for the purpose of broadcasting system-wide administrative security alerts.
+ADM_TOK_MN,Provides inventory management access for IT technicians to the hardware registry for the purpose of tracking physical and soft digital security tokens.
+ADM_AUD_EX,Provides download access for compliance auditors to the master log vault for the purpose of exporting configuration change history datasets.
+ADM_SGN_LV,Provides assignment access for corporate treasurers to the signature authority matrix for the purpose of mapping executive sign-off tiers.
+PP_CH_ISS,Provides upload access for payables clerks to the Positive Pay portal for the purpose of transmitting check issuance logs to the bank.
+PP_CH_EDT,Provides entry access for operations clerks to the check registry for the purpose of manually adding or modifying single check issuance items.
+PP_CH_DEC,Provides decision-making access for treasury managers to the fraud resolution tool for the purpose of approving or returning suspect exception checks.
+PP_ACH_WHL,Provides management access for finance managers to the ACH routing registry for the purpose of maintaining the authorized company sender whitelist.
+PP_ACH_DEC,Provides decision-making access for cash managers to the ACH block terminal for the purpose of resolving unauthorized incoming corporate debits.
+PP_REV_VW,Provides read-only access for internal auditors to the exception queue for the purpose of assessing historical check and ACH fraud exception lists.
+PP_REV_AP,Provides override access for security managers to the automated transaction block for the purpose of forcing payments past systemic fraud warnings.
+PP_VRT_CR,Provides creation access for purchasing clerks to the procurement system for the purpose of generating single-use virtual commercial credit cards.
+PP_VRT_LMT,Provides modification access for expense managers to the procurement system for the purpose of locking down spending caps on active virtual cards.
+PP_STOP_CR,Provides creation access for service clerks to the check management terminal for the purpose of placing active stop-payment mandates on checks.
+PP_STOP_CN,Provides cancellation access for operations managers to the check management terminal for the purpose of rescinding active stop-payment instructions.
+PP_IMG_VW,Provides view-only access for research clerks to the digital check depository for the purpose of inspecting image front/backs of cleared checks.
+PP_ALR_SET,Provides setup access for security teams to the messaging engine for the purpose of defining immediate notification parameters for check mismatches.
+PP_EXP_DL,Provides download access for audit clerks to the Positive Pay database for the purpose of extracting security resolution logs into spreadsheets.
+PP_MNT_RULE,Provides configuration access for security officers to the validation engine for the purpose of building customized sorting rules for inbound debits.
+LIQ_SWP_VW,Provides read-only access for cash treasurers to the concentration dashboard for the purpose of monitoring automated target-balance sweep activities.
+LIQ_SWP_MD,Provides management access for corporate treasurers to the sweep controller for the purpose of updating liquidity targets and concentration triggers.
+LIQ_ZBA_VW,Provides read-only access for financial analysts to the multi-tiered ledger panel for the purpose of observing zero-balance account sub-structures.
+LIQ_NOT_CR,Provides scheduling access for treasury clerks to the branch operations system for the purpose of arranging automated transport or large vault deposits.
+LIQ_INVST_MD,Provides execution access for investment managers to the liquidity portal for the purpose of modifying rules for overnight cash investments.
+LIQ_POOL_VW,Provides view-only access for global treasurers to the pooling module for the purpose of reviewing intercompany multi-currency global balances.
+LIQ_POOL_TR,Provides transfer access for cash managers to the pooling module for the purpose of executing manual localized intercompany sweeping.
+LIQ_FCST_CR,Provides building access for treasury analysts to the analytics engine for the purpose of running simulated cash projection and runway trends.
+LIQ_FX_EXP,Provides view-only access for risk managers to the corporate balance sheet tracker for the purpose of assessing current multi-currency exchange risk.
+LIQ_INT_ALC,Provides modification access for tax accountants to the ledger calculation engine for the purpose of adjusting internal intercompany interest distribution grids.
+TRD_LC_CR,Provides drafting access for trade clerks to the international trade system for the purpose of initiating commercial documentary Letters of Credit.
+TRD_LC_AP,Provides authorization access for corporate treasurers to the international trade system for the purpose of executing finished Letters of Credit.
+TRD_BG_CR,Provides entry access for operations clerks to the credit facility platform for the purpose of requesting bank guarantees and standby lines.
+TRD_BG_AP,Provides authorization access for finance directors to the credit facility platform for the purpose of final sign-off on bank guarantee contracts.
+TRD_DOC_UP,Provides upload access for shipping clerks to the document management repository for the purpose of indexing bills of lading and import trade receipts.
+LN_DRAW_CR,Provides drafting access for treasury managers to the commercial credit portal for the purpose of requesting loan advances against open credit facilities.
+LN_DRAW_AP,Provides authorization access for corporate executives to the commercial credit portal for the purpose of executing loan advance funding draws.
+LN_PMT_CR,Provides drafting access for accounts payable clerks to the debt management system for the purpose of scheduling loan principal or interest payments.
+LN_PMT_AP,Provides authorization access for finance managers to the debt management system for the purpose of releasing scheduled credit facility amortizations.
+LN_STAT_VW,Provides view-only access for corporate auditors to the debt tracking engine for the purpose of assessing open loan positions and payment histories.
+FT_FTP_UP,Provides upload access for system integrations to the secure file transfer gateway for the purpose of moving batch payment instructions manually or through code.
+FT_FTP_DN,Provides download access for corporate developers to the secure file transfer gateway for the purpose of extracting statement data like BAI2 or MT940 files.
+FT_MAP_CF,Provides configuration access for software developers to the middleware orchestrator for the purpose of mapping ERP data fields to banking structures.
+FT_VAL_ERR,Provides modification access for data clerks to the file staging dashboard for the purpose of adjusting metadata fields blocked by transmission format checks.
+FT_SCH_MD,Provides scheduling access for automated developers to the ingestion cron engine for the purpose of altering batch processing routines and cutoff frequencies.
+FT_KEY_MN,Provides administrative access for IT technicians to the cryptography safe for the purpose of managing public encryption keys used in file encryptions.
+FT_NOT_CF,Provides creation access for software developers to the communication matrix for the purpose of configuring real-time webhook responses for file events.
+FT_HIST_VW,Provides read-only access for system support technicians to the file history console for the purpose of validating transmission successes or delivery failures.
+FT_REJ_VW,Provides view-only access for technical clerks to the exception logs for the purpose of identifying formatting causes behind file ingestion rejections.
+FT_TIM_MD,Provides configuration access for cybersecurity analysts to the scheduling engine for the purpose of establishing permissible hours for user logons.
+MOB_ACC_EN,Provides activation access for corporate administrators to the mobile registry for the purpose of enabling handheld application access for active profiles.
+MOB_RDC_EN,Provides operational access for accounting clerks to the remote deposit capture module for the purpose of scanning corporate checks from mobile apps.
+MOB_RDC_LIMIT,Provides configuration access for credit managers to the mobile deposit controller for the purpose of specifying maximum daily mobile check capture limits.
+MOB_TXN_AP,Provides authorization access for moving executives to the mobile banking framework for the purpose of certifying queued payments on handheld devices.
+MOB_ALR_PN,Provides configuration access for application users to the mobile notification client for the purpose of adjusting preferred transactional push message alerts.
+MOB_GEO_EN,Provides tracking management access for cybersecurity teams to the mobile endpoint client for the purpose of enabling physical location tracking for risk verification.
+MOB_BIOM_EN,Provides management access for mobile users to the device security wrapper for the purpose of turning on biometric fingerprint or facial authentication.
+MOB_CAM_EN,Provides hardware access for system users to the mobile operating module for the purpose of granting camera use during invoice optical character scanning.
+MOB_OFF_VW,Provides view-only access for mobile executives to the localized portal dashboard for the purpose of examining handheld treasury management summaries.
+MOB_DEV_DE,Provides remote wiping access for IT helpdesk teams to the central deployment server for the purpose of unregistering and cleaning lost mobile business units.
+MNT_ADD_AC,Provides creation access for corporate treasurers to the corporate account database for the purpose of requesting new legal checking or savings accounts.
+MNT_CLS_AC,Provides termination access for corporate administrators to the corporate account database for the purpose of filing account closure and wind-down mandates.
+MNT_ADR_MD,Provides modification access for company administrators to the profile management interface for the purpose of updating legal addresses or contact directories.
+SUP_TKT_CR,Provides creation access for system users to the technical desk software for the purpose of launching troubleshooting inquiries directly to bank engineers.
+SUP_SCR_SH,Provides connection access for IT technicians to the remote desktop bridge for the purpose of authorizing troubleshooting screen-sharing sessions with bank support.
+SUP_LOG_VW,Provides view-only access for system analysts to the support ticketing database for the purpose of tracking historical issue resolution timelines and outcomes.

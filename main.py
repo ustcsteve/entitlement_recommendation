@@ -44,14 +44,14 @@ class EntitlementResponse(BaseModel):
     extracted_attributes: Optional[ExtractedAttributesSchema] = None
     recommended_desc: str
     
-    # Lineage Audit Requirements (Renamed & Added final elements)
+    # Lineage Audit Requirements
     initial_quality_score: Optional[int] = None
     initial_quality_reason: List[str] = []
     final_quality_score: int
     final_quality_reason: List[str] = []
     
     initial_validation_passed: Optional[bool] = None
-    initial_critique: List[str] = []  # Renamed from initial_final_critique
+    initial_critique: List[str] = []
     final_validation_passed: bool
     final_critique: List[str] = []
 
@@ -129,14 +129,26 @@ accessor_agent = BedrockBaseAgent(
     "You are the Accessor Agent. Rate Quality Indicator 'Yes' or 'No'. Standard forms: dev, qa, prod, test, uat. Scores: 1 (missing component), 2 (unclear), 3 (compliant).",
     AccessorSchema
 )
+
+# UPDATED: Instructed to analyze both the title/name and the raw description text for attribute extraction
 creator_agent = BedrockBaseAgent(
     "CreatorAgent",
-    "You are the Creator Agent. Adhere strictly to layout blueprint structure: 'Provides [level of access] for [target users] to the [resource name] purpose [explain purpose based on context]'",
+    "You are the Creator Agent. Your job is to build the 'recommended_desc' tracking string.\n"
+    "Do NOT update, modify, rewrite, or attempt to change the entitlement name/code provided to you. It is a read-only tracking field.\n\n"
+    "CRITICAL CONTEXT INFERENCE:\n"
+    "Carefully extract the key attributes (target users, access level, and resource name) by combining the semantic clues found within "
+    "BOTH the Entitlement Name/Title string AND the raw input description text. (For example, an entitlement code string like 'ACH_CRED_CR' contains core info about the resource 'ACH' and access level 'creation/drafting').\n\n"
+    "Adhere strictly to this layout blueprint structure for the description generation output:\n"
+    "'Provides [level of access] for [target users] to the [resource name] purpose [explain purpose based on context]'",
     CreatorSchema
 )
+
+# UPDATED: Added constraint to the acronym expansion guardrail
 validator_agent = BedrockBaseAgent(
     "ValidatorAgent",
-    "You are the Validator Agent. Audit against Data Classifications: Public, Proprietary External, Internal, Confidential, Restricted. Enforce no raw human names, expand acronyms.",
+    "You are the Validator Agent. Audit against Data Classifications: Public, Proprietary External, Internal, Confidential, Restricted.\n"
+    "Enforce no raw human names.\n"
+    "Mandatory Guardrail: Check spelling and expand acronyms except entitlement name/code.",
     ValidatorSchema
 )
 
@@ -156,7 +168,6 @@ def accessor_node(state: AgentCoreState) -> Dict[str, Any]:
         "current_agent": "Accessor"
     }
     
-    # Capture the snapshot if it's the first time the Accessor runs
     if state.get("initial_quality_score") is None:
         output["initial_quality_score"] = response.quality_score
         output["initial_quality_reason"] = response.quality_reasons
@@ -164,9 +175,10 @@ def accessor_node(state: AgentCoreState) -> Dict[str, Any]:
     return output
 
 def creator_node(state: AgentCoreState) -> Dict[str, Any]:
+    # Pass both fields explicitly for contextual extraction
     payload = (
-        f"Entitlement: {state['input_entitlement_name']}\n"
-        f"Context: {state['input_entitlement_desc']}\n"
+        f"Entitlement Name/Title (Analyze for attribute context): {state['input_entitlement_name']}\n"
+        f"Input Description Context: {state['input_entitlement_desc']}\n"
         f"Prior Recommended Attempt: {state.get('recommended_desc','')}\n"
         f"Accessor Issues: {state.get('quality_reason', [])}\n"
         f"Validator Guardrail Failures: {state.get('final_critique', [])}"
@@ -194,7 +206,6 @@ def validator_node(state: AgentCoreState) -> Dict[str, Any]:
         "current_agent": "Validator"
     }
     
-    # Capture the snapshot if it's the first time the Validator runs
     if state.get("initial_validation_passed") is None:
         output["initial_validation_passed"] = response.validation_passed
         output["initial_critique"] = response.guardrail_critique
@@ -237,8 +248,8 @@ agent_core_workflow = builder.compile()
 
 app = FastAPI(
     title="AgentCore Governance Multi-Agent Microservice",
-    version="1.2.0",
-    description="Identity governance execution API with final-state evaluation metrics tracing."
+    version="1.4.0",
+    description="Identity governance execution API with structural tracking and contextual token extraction features."
 )
 
 @app.get("/", include_in_schema=False)
@@ -279,9 +290,9 @@ async def process_identity_entitlement(request: EntitlementRequest):
         
         graph_execution_result = agent_core_workflow.invoke(initial_state)
         
-        # Explicit mapping mapping back cleanly to the updated EntitlementResponse schema
+        # Explicit mapping mapping back cleanly to the response schema payload
         response_payload = {
-            "input_entitlement_name": graph_execution_result["input_entitlement_name"],
+            "input_entitlement_name": request.entitlement_name,
             "input_entitlement_desc": graph_execution_result["input_entitlement_desc"],
             "environment": graph_execution_result["environment"],
             "loop_count": graph_execution_result["loop_count"],
@@ -292,12 +303,12 @@ async def process_identity_entitlement(request: EntitlementRequest):
             "initial_quality_score": graph_execution_result["initial_quality_score"],
             "initial_quality_reason": graph_execution_result["initial_quality_reason"],
             "final_quality_score": graph_execution_result["quality_score"],
-            "final_quality_reason": graph_execution_result["quality_reason"],  # Added
+            "final_quality_reason": graph_execution_result["quality_reason"],
             
             "initial_validation_passed": graph_execution_result["initial_validation_passed"],
-            "initial_critique": graph_execution_result["initial_critique"],  # Renamed
+            "initial_critique": graph_execution_result["initial_critique"],
             "final_validation_passed": graph_execution_result["validation_passed"],
-            "final_critique": graph_execution_result["final_critique"]  # Added
+            "final_critique": graph_execution_result["final_critique"]
         }
         
         return response_payload

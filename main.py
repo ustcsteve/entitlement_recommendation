@@ -256,6 +256,10 @@ app = FastAPI(
 async def root_redirect():
     return RedirectResponse(url="/docs")
 
+@app.get("/health", status_code=status.HTTP_200_OK, tags=["System Integrity"])
+async def health_check():
+    return {"status": "healthy", "engine": "AWS Bedrock Framework Cluster"}
+
 @app.post(
     "/process-entitlement",
     response_model=EntitlementResponse,

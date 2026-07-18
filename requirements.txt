@@ -1,0 +1,8 @@
+fastapi>=0.110.0
+uvicorn>=0.30.0
+pydantic>=2.0
+langchain-core
+langchain-aws
+langgraph
+pandas
+boto3
